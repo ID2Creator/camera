@@ -1,34 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>ARG com MindAR</title>
-    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.5/dist/mindar-image-aframe.prod.js"></script>
-    <style>
-      body, html { margin: 0; padding: 0; overflow: hidden; }
-    </style>
-  </head>
-  <body>
-    <!-- A cena AR -->
-    <a-scene mindar-image="imageTargetSrc: ./alvos/sala.mind" 
-             embedded color-space="sRGB" 
-             renderer="colorManagement: true, physicallyCorrectLights" 
-             vr-mode-ui="enabled: false" 
-             device-orientation-permission-ui="enabled: true">
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Acesso à Câmera</title>
+</head>
+<body>
+  <h2>Minha Câmera</h2>
+  <video id="video" autoplay playsinline style="width: 100%; max-width: 600px; border: 1px solid #000;"></video>
 
-      <!-- Câmera -->
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+  <script>
+    // Pega o elemento <video>
+    const video = document.getElementById('video');
 
-      <!-- Quando detectar a imagem alvo (targetIndex: 0) -->
-      <a-entity mindar-image-target="targetIndex: 0">
-        <!-- Aqui pode ser qualquer coisa: texto, imagem, link, 3D... -->
-        <a-text value="CÓDIGO SECRETO: 3945" 
-                color="red" 
-                position="0 0 0" 
-                scale="1.5 1.5 1.5">
-        </a-text>
-      </a-entity>
-    </a-scene>
-  </body>
+    // Pede acesso à câmera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        // Conecta o vídeo ao stream da câmera
+        video.srcObject = stream;
+      })
+      .catch(error => {
+        console.error("Erro ao acessar a câmera:", error);
+        alert("Não foi possível acessar a câmera.");
+      });
+  </script>
+</body>
 </html>
