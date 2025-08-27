@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ARG Câmera Secreta</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <!-- Cena de realidade aumentada -->
+    <a-scene embedded arjs>
+      <!-- Aqui dizemos qual marcador vai ser usado -->
+      <!-- "hiro.patt" é um padrão pronto do AR.js, mas pode ser trocado pelo SEU logotipo -->
+      <a-marker preset="hiro">
+        <!-- O que aparece em cima do marcador -->
+        <a-text value="CÓDIGO: 3945" color="red" position="0 0.1 0" scale="2 2 2"></a-text>
+      </a-marker>
+
+      <!-- Necessário para a câmera -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
