@@ -2,26 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Acesso à Câmera</title>
+  <title>ARG Misterioso</title>
+  <style>
+    body, html { margin: 0; overflow: hidden; width: 100%; height: 100%; }
+    canvas { display: block; }
+  </style>
 </head>
 <body>
-  <h2>Minha Câmera</h2>
-  <video id="video" autoplay playsinline style="width: 100%; max-width: 600px; border: 1px solid #000;"></video>
-
-  <script>
-    // Pega o elemento <video>
-    const video = document.getElementById('video');
-
-    // Pede acesso à câmera
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        // Conecta o vídeo ao stream da câmera
-        video.srcObject = stream;
-      })
-      .catch(error => {
-        console.error("Erro ao acessar a câmera:", error);
-        alert("Não foi possível acessar a câmera.");
-      });
-  </script>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
